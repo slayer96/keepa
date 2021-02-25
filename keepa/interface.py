@@ -91,6 +91,8 @@ def _parse_stats(stats, to_datetime):
                     stat_value_item = stat_value[ind] if ind < len(stat_value) else None
 
                     def normalize_value(v):
+                        if isinstance(v, str) and not v.isdigit():
+                            return None
                         if v < 0:
                             return None
 
